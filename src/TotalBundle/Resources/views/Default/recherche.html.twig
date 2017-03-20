@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-primary" type="submit">
+    {{ form_end(form) }}
+
+
+    <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>Titre des albums</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for album in albums %}
+            <tr>
+                <th>Titre</th>
+                <td style="color:red;">{{ album.titre }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ album.genre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img style="width: 150px; height: 150px;" src="{{ asset('upload/'~album.image) }}"  alt="" /></td>
+            </tr>
+
+        {% else %}
+            <tr><td>pas d'albums correspondant à la recherche</td></tr>
+        {% endfor %}
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+
+
+
+{% endblock %}

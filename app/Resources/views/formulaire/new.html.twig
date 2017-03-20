@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align:center;">Formulaire creation</h1>
+    <div class="container" style="width: 50%;>
+    {{ form_start(form) }}
+        <form action="{{ path('formulaire_new') }}" method="POST" name="formmail">
+
+    {{ form_start(form) }}
+        {{form_label(form.nom, 'nom')}}
+        {{form_widget(form.nom, {'attr':{'class':'form-control'}}) }}
+        {{form_errors(form.nom)}}
+
+        {{form_label(form.mail, 'mail')}}
+        {{form_widget(form.mail, {'attr':{'class':'form-control'}}) }}
+        {{form_errors(form.mail)}}
+
+        {{form_label(form.sujet, 'sujet')}}
+        {{form_widget(form.sujet, {'attr':{'class':'form-control'}}) }}
+        {{form_errors(form.sujet)}}
+
+        {{form_label(form.message, 'message')}}
+        {{form_widget(form.message, {'attr':{'class':'form-control'}}) }}
+        {{form_errors(form.message)}}
+            <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('formulaire_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

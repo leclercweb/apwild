@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Album</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ album.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ album.titre }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ album.genre }}</td>
+            </tr>
+            <th>Image</th>
+                <td><img style="width: 45%;" src="{{ asset('upload/'~album.image) }}"  alt="" />
+            </td>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('album_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('album_edit', { 'id': album.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
